@@ -39,7 +39,7 @@ export default function(props) {
             <h1>{count}</h1>
             <div className={cls.item}>
                 <Button size='mini' onClick={deleteBasket} disabled={buttonDisabledMin}>-</Button> 
-                <Input placeholder='...' onChange={event => onCangeValue(event.target.value)} /> 
+                <Input placeholder='...' onChange={event => onCangeValue(event.target.value)} value={count}/> 
                 <Button size='mini' onClick={addBasket} disabled={buttonDisabledMax}>+</Button>
             </div>
             <div className={cls.warning}>{display}</div>
