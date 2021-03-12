@@ -1,10 +1,21 @@
+input {
+    margin: 0 10px 10px 10px !important; 
+}
+
 .items {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 100px;
+    height: 200px;
 }
-input {
-    margin: 0 10px 10px 10px !important; 
+
+.item {
+    height: 60px;
+}
+
+.warning {
+    height: 20px;
+    margin: 10px;
+    color: tomato;
 }

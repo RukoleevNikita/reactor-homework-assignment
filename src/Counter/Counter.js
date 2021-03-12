@@ -1,42 +1,48 @@
-import React from 'react'
+import React, {useState} from 'react'
+// import PropTypes from 'prop-types'
 
 import cls from './Counter.module.css'
 
 import { Button } from 'semantic-ui-react'
 import { Input } from 'semantic-ui-react'
 
-export default class Counter extends React.Component {
-    state = {
-        value: 0
+export default function(props) {
+
+    let [count, setCount] = useState(2)
+    
+    let addBasket = () => {
+        setCount(count + 1)
+    }
+    
+    
+    let deleteBasket = () => {
+        setCount(count - 1)
     }
 
-    addBasket = () => {
-        this.setState((prevState) => {
-            return {
-                value: prevState.value + 1
-            }
-        })
-    }
-
-    deleteBasket = () => {
-        this.setState((prevState) => {
-            return {
-                value: prevState.value - 1
-            }
-        })
+    let onCangeValue = (el) => {
+        setCount(el)
     }
 
 
-    render() {
-        return (
-            <div className={cls.items}>
-                <h1>{this.state.value}</h1>
-                <div>
-                <Button size='mini' onClick={this.deleteBasket}>-</Button>
-                <Input placeholder='...' />
-                <Button size='mini' onClick={this.addBasket}>+</Button>
-               </div>
+    if (count > props.max) {
+        var display = `Вы можете заказать либо ${props.min} либо ${props.max} товаров`
+        var buttonDisabledMax = true;
+    }
+    
+    if (count < props.min) {
+        var display = `Вы можете заказать либо ${props.min} либо ${props.max} товаров`
+        var buttonDisabledMin  = true;
+    }
+
+    return (
+        <div className={cls.items}>
+            <h1>{count}</h1>
+            <div className={cls.item}>
+                <Button size='mini' onClick={deleteBasket} disabled={buttonDisabledMin}>-</Button> 
+                <Input placeholder='...' onChange={event => onCangeValue(event.target.value)} /> 
+                <Button size='mini' onClick={addBasket} disabled={buttonDisabledMax}>+</Button>
             </div>
-        )
-    }
+            <div className={cls.warning}>{display}</div>
+        </div>
+    )
 }
