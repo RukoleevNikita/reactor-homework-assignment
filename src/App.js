@@ -1,11 +1,13 @@
 import cls from './App.module.css'
-import Counter from './Counter/Counter'
+import CounterFunc from './Counter/CounterFunction'
+import CounterClass from './Counter/CounterClass'
 
 
 function App() {
   return (
     <section className={cls.section}>
-      <Counter min={1} max={5}/>
+      <CounterFunc min={1} max={5}/>
+      <CounterClass min={1} max={5}/>
     </section>
   )
 }

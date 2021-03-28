@@ -8,7 +8,7 @@ import { Input } from 'semantic-ui-react'
 
 export default function(props) {
 
-    let [count, setCount] = useState(2)
+    let [count, setCount] = useState(props.min)
     
     let addBasket = () => {
         setCount(count + 1)
@@ -39,7 +39,7 @@ export default function(props) {
             <h1>{count}</h1>
             <div className={cls.item}>
                 <Button size='mini' onClick={deleteBasket} disabled={buttonDisabledMin}>-</Button> 
-                <Input placeholder='...' onChange={event => onCangeValue(event.target.value)} value={count}/> 
+                <Input placeholder='...' onChange={event => onCangeValue(Number(event.target.value))} value={count}/> 
                 <Button size='mini' onClick={addBasket} disabled={buttonDisabledMax}>+</Button>
             </div>
             <div className={cls.warning}>{display}</div>
