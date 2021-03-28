@@ -1,12 +1,12 @@
 import React, {useState} from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 import cls from './Counter.module.css'
 
 import { Button } from 'semantic-ui-react'
 import { Input } from 'semantic-ui-react'
 
-export default function(props) {
+function Some(props) {
 
     let [count, setCount] = useState(props.min)
     
@@ -45,4 +45,11 @@ export default function(props) {
             <div className={cls.warning}>{display}</div>
         </div>
     )
+}
+
+export default Some;
+
+Some.propTypes = {
+    min: PropTypes.number,
+    max: PropTypes.number
 }
